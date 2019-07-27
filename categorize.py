@@ -1,0 +1,59 @@
+import os, shutil
+
+cwd = os.getcwd()
+dir_files = os.listdir()
+
+class Categorize():
+
+    def __init__(self, **obj):
+        self.path = cwd
+        self.movedir = obj["movedir"]
+        self.extension = obj["extension"]
+        self.moveto()
+
+    def moveto(self):
+        total_file_moved = 0
+
+        # to check if images, songs, videos, pdf dir is there if not then create a new one
+        if not os.path.exists(cwd+"\\"+self.movedir):
+            os.makedirs(cwd+"\\"+self.movedir)
+        
+        # Now Move the file to their respctive directory
+        for item in dir_files:
+            item = item.lower()
+            if os.path.isfile(item):
+                if item.endswith(self.extension):
+                    total_file_moved += 1
+                    shutil.move(item, self.path+"\\"+self.movedir)
+        
+        print({
+            "Status": "Completd",
+            "File is": self.movedir + "-" + self.extension,
+            "Total Files Moved": total_file_moved
+        })
+
+
+app = Categorize(**{
+    "movedir": "images",
+    "extension": "png"
+    })
+app = Categorize(**{
+    "movedir": "images",
+    "extension": "jpg"
+    })
+app = Categorize(**{
+    "movedir": "videos",
+    "extension": "mp4"
+    })
+app = Categorize(**{
+    "movedir": "songs",
+    "extension": "mp3"
+    })
+app = Categorize(**{
+    "movedir": "docs",
+    "extension": "pdf"
+    })
+app = Categorize(**{
+    "movedir": "docs",
+    "extension": "xlsx"
+    })   
