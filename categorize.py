@@ -27,7 +27,7 @@ class Categorize():
                     shutil.move(item, self.path+"\\"+self.movedir)
         
         print({
-            "Status": "Completd",
+            "Status": "Completed",
             "File is": self.movedir + "-" + self.extension,
             "Total Files Moved": total_file_moved
         })
