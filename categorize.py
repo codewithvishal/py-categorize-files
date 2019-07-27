@@ -28,7 +28,7 @@ class Categorize():
         
         print({
             "Status": "Completed",
-            "File is": self.movedir + "-" + self.extension,
+            "File is": self.movedir + "(" + self.extension + ")",
             "Total Files Moved": total_file_moved
         })
 
