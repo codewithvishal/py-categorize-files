@@ -15,8 +15,8 @@ class Categorize():
         total_file_moved = 0
 
         # to check if images, songs, videos, pdf dir is there if not then create a new one
-        if not os.path.exists(os.path.join(cwd, movedir)):
-            os.makedirs(os.path.join(cwd, movedir))
+        if not os.path.exists(os.path.join(self.path, self.movedir)):
+            os.makedirs(os.path.join(self.path, self.movedir))
         
         # Now Move the file to their respctive directory
         for item in dir_files:
@@ -24,7 +24,7 @@ class Categorize():
             if os.path.isfile(item):
                 if item.endswith(self.extension):
                     total_file_moved += 1
-                    shutil.move(item, os.path.join(cwd, movedir))
+                    shutil.move(item, os.path.join(self.path, self.movedir))
         
         print({
             "Status": "Completed",
